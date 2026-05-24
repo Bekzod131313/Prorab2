@@ -428,7 +428,7 @@ svg{display:block;flex-shrink:0}
       <input type="hidden" id="op-ob-id">
     </div>
     <div id="ob-new-row" style="display:none" class="frow"><input type="text" class="fi" id="op-ob-new" placeholder="Yangi obyekt nomi"></div>
-    <div class="frow"><label class="flbl">Ishchi (ixtiyoriy)</label>
+    <div class="frow" id="wkr-row" style="display:none"><label class="flbl">Ishchi</label>
       <select class="fi" id="op-wkr"><option value="">— Ishchi tanlang —</option></select>
     </div>
     <div class="frow"><label class="flbl">Izoh</label><input type="text" class="fi" id="op-izoh" placeholder="Qo'shimcha ma'lumot"></div>
@@ -815,7 +815,8 @@ function renderObDet(){
     <button class="obact" style="background:var(--subtle);color:var(--muted)" onclick="trigCam()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>Rasm
     </button>
-  </div>`:'';
+  </div>
+  <button onclick="deleteOb('${ob.id}')" data-confirm="0" id="ob-del-btn-${ob.id}" style="width:calc(100% - 32px);margin:0 16px 14px;padding:14px;border-radius:14px;border:1.5px solid var(--red);background:#fff;color:var(--red);font-size:14px;font-weight:700;cursor:pointer;display:block;text-align:center">🗑 O'chirish</button>`:'';
 
   $('ob-detail-body').innerHTML=`
     <div class="obhero" style="background:linear-gradient(135deg,${c},${c}bb)">
@@ -930,6 +931,9 @@ function openGlobalChoice(){curObChiqimId=null;$('choice-bg').classList.add('ope
 function pickCat(cat){
   $('choice-bg').classList.remove('open');
   curCat=cat;curType='chiqim';editOpId=null;
+  // Show worker only for usta
+  const wr=$('wkr-row');
+  if(wr) wr.style.display = cat==='usta' ? 'block' : 'none';
   $('op-title').textContent='Pul berildi';
   // Restore normal header
   const hdr=$('op-hico').parentElement;
