@@ -933,6 +933,7 @@ async function uploadObImg(inp){
 // ── OP SHEET ──────────────────────────────────────────────────────────────────
 function openChoiceSheet(){$('choice-bg').classList.add('open');}
 function openGlobalChoice(){curObChiqimId=null;$('choice-bg').classList.add('open');}
+function closeChoiceSheet(){$('choice-bg').classList.remove('open');}
 
 function pickCat(cat){
   $('choice-bg').classList.remove('open');
