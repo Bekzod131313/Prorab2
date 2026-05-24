@@ -387,12 +387,9 @@ svg{display:block;flex-shrink:0}
 <!-- ═══ SHEETS ═══ -->
 
 <!-- CHOICE: KATEGORIYALAR -->
-<div id="choice-bg" class="sbg" onclick="if(event.target===this)closeChoiceSheet()">
-  <div class="sht">
+<div id="choice-bg" class="sbg" onclick="closeChoiceSheet()">
+  <div class="sht" onclick="event.stopPropagation()">
     <div class="shandle"></div>
-    <div onclick="closeChoiceSheet()" style="text-align:center;padding:6px 0 2px;cursor:pointer">
-      <div style="width:36px;height:4px;background:#e5e7eb;border-radius:2px;margin:0 auto 14px"></div>
-    </div>
     <div class="stitle">Nima uchun?</div>
     <div class="catgrid">
       <button class="catbtn" onclick="pickCat('usta')">
