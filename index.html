@@ -195,8 +195,9 @@ svg{display:block;flex-shrink:0}
 #fab{display:none;position:fixed;bottom:82px;right:16px;width:54px;height:54px;border-radius:27px;background:var(--accent);border:none;color:#fff;cursor:pointer;z-index:150;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(249,115,22,.5)}
 
 /* SHEETS */
-.sbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:flex-end}
+.sbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:flex-end;cursor:pointer}
 .sbg.open{display:flex}
+.sht{cursor:default}
 .sht{background:#fff;border-radius:24px 24px 0 0;padding:20px 18px 36px;width:100%;max-height:92vh;overflow-y:auto}
 .shandle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
 .stitle{font-size:17px;font-weight:700;margin-bottom:16px;text-align:center}
@@ -388,7 +389,7 @@ svg{display:block;flex-shrink:0}
 
 <!-- CHOICE: KATEGORIYALAR -->
 <div id="choice-bg" class="sbg" onclick="closeChoiceSheet()">
-  <div class="sht" onclick="event.stopPropagation()">
+  <div class="sht" onclick="event.stopPropagation()" style="touch-action:none">
     <div class="shandle"></div>
     <div class="stitle">Nima uchun?</div>
     <div class="catgrid">
