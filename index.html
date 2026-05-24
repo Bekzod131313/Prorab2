@@ -890,21 +890,24 @@ function updateOpHdr(){
 function trigCam(){const f=$('ob-cam-inp');if(f)f.click();}
 
 async function deleteOb(obId){
-  const btn=document.getElementById('del-ob-btn-'+obId);
-  if(!btn)return;
-  if(btn.dataset.confirm!=='1'){
-    btn.textContent='Tasdiqlaysizmi? Yana bosing!';
-    btn.style.background='var(--red)';
-    btn.style.color='#fff';
-    btn.dataset.confirm='1';
-    setTimeout(()=>{
-      btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg> Ochirish';
-      btn.style.background='#fff';
-      btn.style.color='var(--red)';
-      btn.dataset.confirm='0';
-    },3000);
+  if(!obId){alert('Xato: obyekt topilmadi');return;}
+  const btn=document.getElementById('ob-del-btn-'+obId)||document.getElementById('ob-del-btn');
+  if(!btn||btn.dataset.confirm!=='1'){
+    if(btn){
+      btn.textContent='Tasdiqlaysizmi? Yana bosing!';
+      btn.style.background='var(--red)';
+      btn.style.color='#fff';
+      btn.dataset.confirm='1';
+      setTimeout(()=>{
+        btn.textContent='🗑 Ochirish';
+        btn.style.background='#fff';
+        btn.style.color='var(--red)';
+        btn.dataset.confirm='0';
+      },3000);
+    }
     return;
   }
+  btn.textContent='Ochirilyapti...';
   await sb('/rest/v1/operatsiyalar?obyekt_id=eq.'+obId,{method:'DELETE'});
   await sb('/rest/v1/obyektlar?id=eq.'+obId,{method:'DELETE'});
   OBS=OBS.filter(o=>o.id!==obId);
