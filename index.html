@@ -66,7 +66,9 @@ svg{display:block;flex-shrink:0}
 .bclbl{font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
 .bcsum{font-size:36px;font-weight:900;letter-spacing:-1.5px;margin-bottom:16px}
 .bcrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.bcitem{background:rgba(255,255,255,.18);border-radius:14px;padding:12px}
+.bcitem{background:rgba(255,255,255,.18);border-radius:14px;padding:12px;border:1.5px solid rgba(255,255,255,.1)}
+.bcitem-in{border-color:#86efac !important}
+.bcitem-out{border-color:#fca5a5 !important}
 .bcilbl{font-size:10px;opacity:.8;margin-bottom:3px}
 .bcival{font-size:18px;font-weight:800}
 
@@ -279,8 +281,8 @@ svg{display:block;flex-shrink:0}
       <div class="bclbl">Qo'limdagi balans</div>
       <div class="bcsum" id="bc-bal">—</div>
       <div class="bcrow">
-        <div class="bcitem"><div class="bcilbl">↓ Jami kirim</div><div class="bcival" id="bc-in">—</div></div>
-        <div class="bcitem"><div class="bcilbl">↑ Jami chiqim</div><div class="bcival" id="bc-out">—</div></div>
+        <div class="bcitem bcitem-in"><div class="bcilbl">↓ Kirim</div><div class="bcival" id="bc-in" style="color:#86efac">—</div></div>
+        <div class="bcitem bcitem-out"><div class="bcilbl">↑ Chiqim</div><div class="bcival" id="bc-out" style="color:#fca5a5">—</div></div>
       </div>
     </div>
     <div class="sechdr"><span class="sectitle">Obyektlar</span><span class="seclink" onclick="gp('obyekt')">Barchasi ›</span></div>
@@ -375,7 +377,7 @@ svg{display:block;flex-shrink:0}
 <!-- CHOICE: KATEGORIYALAR -->
 <div id="choice-bg" class="sbg" onclick="if(event.target===this)closeChoiceSheet()">
   <div class="sht">
-    <div class="shandle"></div>
+    <div class="shandle" onclick="closeChoiceSheet()" style="cursor:pointer;padding:10px 0;margin-top:-10px"></div>
     <div class="stitle">Nima uchun?</div>
     <div class="catgrid">
       <button class="catbtn" onclick="pickCat('usta')">
